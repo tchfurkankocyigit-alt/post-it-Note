@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Notes</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.2/jspdf.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+
+	<header class="header">
+		<nav class="navbar">
+			<div class="logo">
+				<h1>Sticky Notes</h1>
+				<span>Furkan Koçyiğit</span>
+			</div>
+
+			<div class="btn">
+				<button class="add-note-btn" onclick="openNoteDialog()">
+					<i class="fa-solid fa-plus"></i>Add</button>
+				<button id="themeToggleBtn" class="theme-toggle-btn"><i class="fa-solid fa-moon"></i></button>
+			</div>
+		</nav>
+	</header>
+
+	<main id="notesContainer" class="notes-grid"></main>
+
+	<dialog id="noteDialog" >
+		<div class="dialog-content animate_animated animate_zoomIn">
+			<div class="dialog-header">
+				<h2 class="dialog-title" id="dialogTitle">Add New Notes</h2>
+				<button class="close-btn" onclick="closeNoteDialog()"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+
+			<form id="noteForm">
+				<div class="form-group">
+					<label for="noteTitle" class="form-label">Title</label>
+					<input type="text" id="noteTitle" class="form-input" placeholder="Enter note title..." required>
+				</div>
+				<div class="form-group">
+					<label for="noteContent" class="form-label">Content</label>
+					<textarea id="noteContent" class="form-textarea" placeholder="Write your note here.."></textarea>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Note Colors</label>
+
+					<div class="color-options">
+						<input type="radio" name="noteColor" id="color-default" value="default" checked>
+						<label for="color-default" class="color-option default" title="Default"></label>
+
+						<input type="radio" name="noteColor" id="color-blue" value="blue">
+						<label for="color-blue" class="color-option blue" title="Blue"></label>
+
+						<input type="radio" name="noteColor" id="color-green" value="green">
+						<label for="color-green" class="color-option green" title="Green"></label>
+
+						<input type="radio" name="noteColor" id="color-yellow" value="yellow">
+						<label for="color-yellow" class="color-option yellow" title="Yellow"></label>
+
+						<input type="radio" name="noteColor" id="color-red" value="red">
+						<label for="color-red" class="color-option red" title="Red"></label>
+
+						<input type="radio" name="noteColor" id="color-purple" value="purple">
+						<label for="color-purple" class="color-option purple" title="Purple"></label>
+					</div>
+
+					
+				</div>
+				<div class="form-group">
+					<label for="noteImages" class="form-label">Images</label>
+					<input type="file" id="noteImages" class="form-input" accept="image/*" multiple>
+
+					<label for="noteImages" class="file-input-label">
+						<i class="fa-solid fa-cloud-arrow-up"></i>
+						<span class="file-input-text">Click to upload images(max5)</span>
+					</label>
+					<div id="imagePreviewContainer" class="image-preview"></div>
+				</div>
+				<div class="dialog-action">
+					<button type="button" class="cancel-btn" onclick="closeNoteDialog()">Cancel</button>
+					<button type="submit" class="save-btn">Save Notes</button>
+				</div>
+			</form>
+		</div>
+	</dialog>
+
+</body>
+</html>
